@@ -32,7 +32,23 @@
             >Skatīt kolekciju <span aria-hidden="true">↓</span></a
           >
         </div>
-        <img id="art" src="images/toyota-supra-a80.jpg" alt="Toyota Supra Mk4 (A80)" />
+        <div id="skats" tabindex="0" aria-label="Automobiļu karuselis">
+          <img
+              id="art"
+              src="images/toyota-supra-a80.jpg"
+              alt="Toyota Supra Mk4 (A80)"
+            />
+          <div class="artbar">
+            <div class="legend" aria-live="polite">
+              <span id="count">01 / 08</span
+              ><strong id="title">Toyota Supra Mk4 (A80)</strong>
+            </div>
+            <div class="controls">
+              <button id="prev" aria-label="Iepriekšējais automobilis">‹</button
+              ><button id="next" aria-label="Nākamais automobilis">›</button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="kolekcija" class="collection wrap">
