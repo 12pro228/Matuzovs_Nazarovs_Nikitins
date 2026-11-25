@@ -125,3 +125,24 @@ art.addEventListener(
   { passive: false },
 );
 showFeatured(featured);
+
+if (
+  "IntersectionObserver" in window &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add("entered");
+        observer.unobserve(entry.target);
+      }
+    },
+    { threshold: 0.08 },
+  );
+  document.querySelectorAll(".reveal").forEach((element) => {
+    if (element.getBoundingClientRect().top >= window.innerHeight)
+      element.classList.add("waiting");
+    observer.observe(element);
+  });
+}
