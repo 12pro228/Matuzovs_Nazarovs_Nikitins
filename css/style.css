@@ -1,4 +1,4 @@
-/* Krāsas un pamata stili */
+/* Krasas un pamata stili */
 
 :root {
   color-scheme: dark;
@@ -61,7 +61,7 @@ a:focus-visible,
   top: .5rem;
 }
 
-/* Kopīgais izkārtojums un navigācija */
+/* Izkartojums un navigacija */
 
 .top,
 nav,
@@ -102,7 +102,7 @@ footer,
 }
 
 .mark {
-  width: 27px;
+  width: 23px;
   height: 17px;
   display: inline-block;
   transform: skewX(-26deg);
@@ -124,7 +124,7 @@ footer a:hover {
   color: var(--fire);
 }
 
-/* Izstādes virsraksts */
+/* Izstades virsraksts */
 
 .mast {
   align-items: end;
@@ -202,12 +202,539 @@ h2 em {
   color: var(--bg);
 }
 
+/* Attēlu karuselis */
 
-#art { display: block; width: 100%; max-height: 460px; object-fit: contain; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 1.5rem; }
-.card { margin: 0; }
-.thumb img { width: 100%; display: block; }
-.collection, .story { padding-block: 3rem; }
-.artbar { padding: 1rem; }
-.controls { gap: .5rem; }
-.controls button { width: 44px; height: 44px; }
+#skats {
+  background: #171819;
+}
+
+.open-art {
+  width: 100%;
+  display: block;
+  position: relative;
+  background: #151515;
+  border: 0;
+  padding: 0;
+  cursor: zoom-in;
+}
+
+#art {
+  width: 100%;
+  height: clamp(260px, 37vw, 565px);
+  object-fit: contain;
+  display: block;
+  touch-action: pan-y;
+}
+
+.zoom {
+  position: absolute;
+  right: .85rem;
+  top: .85rem;
+  background: #101112be;
+  border: 1px solid #ffffff55;
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  font-size: 1.3rem;
+}
+
+.artbar {
+  padding: .8rem clamp(.85rem, 2vw, 2rem);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.legend {
+  gap: 1.1rem;
+}
+
+#count,
+.number {
+  color: var(--fire);
+}
+
+.legend strong {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+
+.controls {
+  gap: .4rem;
+}
+
+.controls button,
+#close {
+  border: 1px solid #656665;
+  border-radius: 50%;
+  background: transparent;
+  width: 44px;
+  height: 44px;
+  font: 1.65rem/1 Arial, sans-serif;
+}
+
+.controls button:hover,
+#close:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* Izstades apraksts */
+
+.story {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4%;
+  padding-block: clamp(4rem, 9vw, 10rem);
+}
+
+.story-label {
+  padding-top: .45rem;
+}
+
+h2 {
+  font-size: clamp(2.8rem, 5.6vw, 6rem);
+}
+
+.story-body p {
+  max-width: 54ch;
+  margin-top: 1.5rem;
+  color: #bcbcb8;
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+  line-height: 1.55;
+}
+
+/* Kolekcijas kartites */
+
+.collection {
+  border-top: 1px solid var(--line);
+  padding-block: clamp(2.4rem, 4.4vw, 5rem) 5rem;
+}
+
+.sectionhead {
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+.sectionhead > span {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.2rem 1.5rem;
+}
+
+.card {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+}
+
+.thumb {
+  display: block;
+  overflow: hidden;
+  background: #191a1a;
+}
+
+.thumb img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 2.15;
+  object-fit: cover;
+  transition: transform .55s ease;
+}
+
+.card:hover img {
+  transform: scale(1.045);
+}
+
+.card-label {
+  display: flex;
+  align-items: baseline;
+  gap: .8rem;
+  padding: .8rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.card-label strong {
+  font-weight: 500;
+  letter-spacing: -.045em;
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding-block: 1.7rem;
+}
+
+/* Automobila apskates logs */
+
+dialog {
+  width: min(1000px, 96%);
+  max-height: 93dvh;
+  overflow: auto;
+  background: #171819;
+  color: var(--text);
+  padding: 1rem;
+  border: 1px solid #525353;
+}
+
+dialog::backdrop {
+  background: #070809ed;
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.viewer-top {
+  margin-bottom: .7rem;
+}
+
+#large {
+  width: 100%;
+  height: min(52dvh, 520px);
+  object-fit: contain;
+  display: block;
+  background: #101112;
+  touch-action: pan-y;
+}
+
+.viewer-bottom {
+  align-items: start;
+  padding: 1.25rem .25rem .3rem;
+  gap: 1rem;
+}
+
+.viewer-bottom h2 {
+  font-size: 2.5rem;
+}
+
+.viewer-bottom p {
+  color: #c2c1bc;
+  max-width: 58ch;
+  margin-top: .7rem;
+}
+
+/* Animacijas un pielagošanas ekranam */
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal.entered {
+    animation: arrive .86s cubic-bezier(.16, .72, .22, 1) both;
+  }
+
+  .mast {
+    animation: arrive .75s ease-out;
+  }
+}
+
+@media (max-width: 700px) {
+  .top {
+    min-height: 62px;
+  }
+
+  .mast {
+    flex-wrap: wrap;
+    gap: .7rem;
+  }
+
+  .entry {
+    font-size: .85rem;
+  }
+
+  #art {
+    height: auto;
+    aspect-ratio: 2 / 1;
+  }
+
+  .story {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.7rem;
+  }
+
+  .sectionhead {
+    margin-bottom: 1.3rem;
+  }
+
+  .viewer-bottom {
+    flex-wrap: wrap;
+  }
+
+  #large {
+    height: auto;
+    max-height: 55dvh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .thumb img {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .waiting:not(.entered):not(:focus-visible) {
+    opacity: 0;
+  }
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.zoom {
+  width: auto;
+  height: auto;
+  top: auto;
+  bottom: 1rem;
+  padding: .5rem .9rem;
+  font: bold .86rem/1.3 Arial, sans-serif;
+  background: #141517ef;
+  border-radius: 1.5rem;
+}
+
+/* Modeļu mekletajs */
+
+.finder {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: start;
+  gap: 2rem;
+  margin-block: clamp(3.4rem, 7vw, 7rem);
+}
+
+.finder h2 {
+  margin-top: .5rem;
+}
+
+.finder-title {
+  align-self: center;
+}
+
+.finder-body label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.searchline {
+  display: flex;
+  align-items: stretch;
+  background: #202123;
+  border: 1px solid #686868;
+  border-radius: .5rem;
+  padding: .3rem;
+}
+
+.searchline:focus-within {
+  outline: 2px solid var(--fire);
+}
+
+.searchline input {
+  min-width: 0;
+  flex: 1;
+  padding: .7rem;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: var(--text);
+}
+
+.searchline button {
+  color: #181818;
+  background: var(--fire);
+  padding: .6rem 1rem;
+  font-weight: bold;
+  border: 0;
+  border-radius: .3rem;
+}
+
+.suggestions,
+.viewer-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin: .9rem 0;
+}
+
+.suggestions button,
+#more,
+.viewer-tools > * {
+  background: #1c1d1e;
+  border: 1px solid #535452;
+  color: var(--text);
+  padding: .45rem .8rem;
+  border-radius: 1.5rem;
+  font-size: .89rem;
+}
+
+.suggestions button:hover,
+#more:hover,
+.viewer-tools > *:hover {
+  border-color: var(--fire);
+}
+
+#status,
+.hint,
+#credit {
+  font-size: .9rem;
+  color: #bdbdb8;
+}
+
+#results,
+#more {
+  grid-column: 1/-1;
+}
+
+#results:empty {
+  display: none;
+}
+
+#more {
+  justify-self: center;
+}
+
+.thumb {
+  position: relative;
+}
+
+.thumb img {
+  aspect-ratio: 16/9;
+  object-fit: contain;
+}
+
+.badge {
+  position: absolute;
+  right: .65rem;
+  bottom: .65rem;
+  background: #161718db;
+  padding: .12rem .48rem;
+  border: 1px solid #ffffff38;
+  font: .8rem/1.45 monospace;
+  border-radius: .25rem;
+}
+
+/* 3D skatitajs */
+
+.viewer-stage {
+  background: #121314;
+}
+
+#embed iframe {
+  border: 0;
+  display: block;
+  width: 100%;
+  height: clamp(230px, 55dvh, 570px);
+}
+
+#work-name {
+  font: 600 clamp(1.1rem, 3vw, 1.85rem)/1.1 Arial, sans-serif;
+  color: var(--text);
+  letter-spacing: -.035em;
+}
+
+.viewer-top {
+  gap: 1rem;
+}
+
+#close,
+.controls {
+  flex-shrink: 0;
+}
+
+.viewer-tools {
+  align-items: center;
+}
+
+.viewer-bottom p {
+  margin: .15rem 0 .5rem;
+}
+
+#credit {
+  color: #e5b39d;
+}
+
+#art {
+  background: #18191b;
+}
+
+@media (max-width: 700px) {
+  .finder {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+
+.hero {
+  padding-bottom: clamp(2.5rem, 5vw, 5rem);
+}
+
+.collection {
+  padding-bottom: clamp(2.5rem, 5vw, 5rem);
+}
+
+#cards {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.finder {
+  border-block: 1px solid var(--line);
+  margin-block: 0;
+  padding-block: clamp(2.5rem, 5vw, 5rem);
+}
+
+.card-label {
+  align-items: baseline;
+}
+
+.card-label strong {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1050px) {
+  #cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 580px) {
+  #cards {
+    grid-template-columns: 1fr;
+  }
+
+  .top {
+    flex-wrap: wrap;
+    gap: .45rem 1rem;
+    padding-block: .75rem;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: .45rem 1rem;
+  }
+}
