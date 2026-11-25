@@ -31,3 +31,35 @@ function showFeatured(index) {
 
 byId("prev").onclick = () => showFeatured(featured - 1);
 byId("next").onclick = () => showFeatured(featured + 1);
+byId("skats").addEventListener("keydown", (event) => {
+  if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+  event.preventDefault();
+  showFeatured(featured + (event.key === "ArrowRight" ? 1 : -1));
+});
+let start;
+const art = byId("art");
+art.addEventListener(
+  "touchstart",
+  (event) => {
+    start = event.touches.length === 1 ? event.touches[0] : null;
+  },
+  { passive: true },
+);
+art.addEventListener("touchcancel", () => {
+  start = null;
+});
+art.addEventListener(
+  "touchend",
+  (event) => {
+    if (!start) return;
+    const dx = event.changedTouches[0].clientX - start.clientX;
+    const dy = event.changedTouches[0].clientY - start.clientY;
+    start = null;
+    if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
+    if (event.cancelable) event.preventDefault();
+    showFeatured(featured + (dx < 0 ? 1 : -1));
+  },
+  { passive: false },
+);
+showFeatured(featured);
+
