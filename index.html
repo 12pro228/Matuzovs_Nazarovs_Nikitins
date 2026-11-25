@@ -33,11 +33,17 @@
           >
         </div>
         <div id="skats" tabindex="0" aria-label="Automobiļu karuselis">
-          <img
+          <button
+            class="open-art"
+            aria-label="Atvērt automobili 3D skatā"
+            aria-haspopup="dialog"
+          >
+            <img
               id="art"
               src="images/toyota-supra-a80.jpg"
               alt="Toyota Supra Mk4 (A80)"
-            />
+            /><span class="zoom" aria-hidden="true">Skatīt 3D ↗</span>
+          </button>
           <div class="artbar">
             <div class="legend" aria-live="polite">
               <span id="count">01 / 08</span
@@ -54,7 +60,7 @@
       <section id="kolekcija" class="collection wrap">
         <div class="sectionhead reveal">
           <h2>Kolekcija<em>.</em></h2>
-          <span>08 automobiļi</span>
+          <span>08 automobiļi · 3D</span>
         </div>
         <div id="cards" class="grid"></div>
       </section>
@@ -81,5 +87,34 @@
         ><span class="mark" aria-hidden="true"></span>SILUETS</a
       ><a href="#sakums">Uz sākumu ↑</a>
     </footer>
+    <dialog id="viewer" aria-labelledby="work-name">
+      <div class="viewer-top">
+        <strong id="work-name"></strong
+        ><button id="close" aria-label="Aizvērt">×</button>
+      </div>
+      <div class="viewer-stage">
+        <img id="large" alt="" />
+        <div id="embed"></div>
+      </div>
+      <div class="viewer-bottom">
+        <div>
+          <p id="description"></p>
+          <p id="credit"></p>
+        </div>
+        <div class="controls">
+          <button id="back" aria-label="Iepriekšējais automobilis">‹</button
+          ><button id="forward" aria-label="Nākamais automobilis">›</button>
+        </div>
+      </div>
+      <div class="viewer-tools">
+        <button id="mode" type="button">Skatīt attēlu</button
+        ><a id="source" target="_blank" rel="noopener noreferrer"
+          >Atvērt Sketchfab ↗</a
+        >
+      </div>
+      <p class="hint" id="hint">
+        Velc, lai pagrieztu. Tuvini ar peles ritentiņu vai diviem pirkstiem.
+      </p>
+    </dialog>
   </body>
 </html>
