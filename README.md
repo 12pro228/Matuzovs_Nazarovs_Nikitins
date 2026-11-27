@@ -7,9 +7,9 @@ Projekts ir izstrādāts prakses laikā, izmantojot HTML5, CSS3 un JavaScript. P
 - **Izstādes nosaukums:** SILUETS — Ātruma forma
 
 ## 2. Komandas dalībnieki
-1. Vārds Nikitins
-2. Vārds Nazarovs
-3. Vārds Matuzovs
+1. Ivans Nikitins
+2. Vadims Nazarovs
+3. Olegs Matuzovs
 
 ## 3. GitHub repozitorijs
 Projekta pirmkods un izstrādes vēsture ir pieejama GitHub repozitorijā:
